@@ -4,17 +4,20 @@ import Counter from './button';
 import Batman from './player';
 import Users from './users';
 import Friends from './Friends';
+import Counters from './Counter';
+import Foods from './Food';
+
 
 const fetchUsers = fetch('https://jsonplaceholder.typicode.com/users')
-.then(res => res.json())
+  .then(res => res.json())
 
-const fetchFriends = async() =>{
-const res =  await fetch('https://jsonplaceholder.typicode.com/users');
-return res.json();
+const fetchFriends = async () => {
+  const res = await fetch('https://jsonplaceholder.typicode.com/users');
+  return res.json();
 }
 
 function App() {
-const friendPromice = fetchFriends()
+  const friendPromice = fetchFriends()
 
   // button 1 onclick used
   function handleClick() {
@@ -39,10 +42,11 @@ const friendPromice = fetchFriends()
       <h1 style={{
         color: "green",
       }}>React core concept part2</h1>
-
-<Suspense fallback = {<p>friends comming...</p>}>
-<Friends friendPromice = {friendPromice} ></Friends>
-</Suspense>
+      <Counters></Counters>
+      <Foods></Foods>
+      <Suspense fallback={<p>friends comming...</p>}>
+        <Friends friendPromice={friendPromice} ></Friends>
+      </Suspense>
 
       <Suspense fallback={<h2>loading...</h2>}>
         <Users fetchUsers={fetchUsers}></Users>
